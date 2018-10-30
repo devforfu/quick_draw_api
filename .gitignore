@@ -2,3 +2,4 @@
 !.gitignore
 .DS_Store
 *.py[cod]
+**/*.pth
