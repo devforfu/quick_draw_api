@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick Doodle Classifier</title>
+    <script type="application/javascript" src="{{ static_url }}/js/site.js"></script>
+    <link rel="stylesheet" href="{{ static_url }}/css/site.css">
+</head>
+<body onload="init()">
+    <div class="topmost">
+        <div class="text">
+            <div class="title">Quick Draw Inference API</div>
+        </div>
+    </div>
+    <div class="container top-pad-20">
+        <canvas id="doodle" class="bordered centered" width="400" height="400"></canvas>
+    </div>
+    <div class="container">
+        <button id="clr" onclick="erase()">Clear Canvas</button>
+    </div>
+    <ul id="response"></ul>
+</body>
+</html>

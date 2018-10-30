@@ -1,0 +1,94 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 6rem;
+    background: whitesmoke;
+}
+
+/* ---------- */
+/* Top Header */
+/* ---------- */
+
+.topmost {
+    height: 100px;
+    text-align: center;
+    background: orange;
+    position: relative;
+}
+
+.topmost .text, .topmost .image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.topmost .title {
+    padding-top: 20px;
+    font-size: 3em;
+    font-family: "Avenir Next", monospace;
+    line-height: 1em;
+    color: ghostwhite;
+}
+
+
+/* ------- */
+/* Canvas  */
+/* ------- */
+
+.bordered {
+    border: 2px solid black;
+}
+
+.top-pad-20 {
+    padding-top: 20px;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+canvas {
+    display: inline;
+}
+
+button {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 10px;
+    background: orange;
+    color: white;
+}
+
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
