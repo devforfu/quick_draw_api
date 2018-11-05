@@ -12,7 +12,7 @@ from starlette.responses import JSONResponse, HTMLResponse
 import uvicorn
 
 import torch
-from torchvision.models import resnet18
+from torchvision.models import resnet50
 from fastai.vision import (
     ImageDataBunch,
     open_image,
@@ -40,7 +40,7 @@ placeholder_data = ImageDataBunch.from_name_re(
     size=224
 )
 
-learn = create_cnn(placeholder_data, resnet18)
+learn = create_cnn(placeholder_data, resnet50)
 state = torch.load(f'models/{MODEL_NAME}.pth', map_location='cpu')
 learn.model.load_state_dict(state, state)
 
@@ -62,13 +62,15 @@ def predict_image_from_base64(base64str):
     _, content = base64str.split(',')
     decoded = base64.b64decode(content)
     image = open_image(BytesIO(decoded))
-    return image.predict(learn)
+    _, _, losses = learn.predict(image)
+    return losses
 
 
 def create_predictions(losses):
     return sorted(
         zip(learn.data.classes, map(float, losses)),
         key=itemgetter(1), reverse=True)
+
 
 
 if __name__ == '__main__':
