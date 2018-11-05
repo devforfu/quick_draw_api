@@ -8,9 +8,9 @@ RUN pip install torchvision_nightly
 RUN pip install fastai==1.0.19
 RUN pip install starlette uvicorn python-multipart aiohttp
 
-ADD app.py app.py
+WORKDIR /app
 
-RUN python app.py
+COPY . /app
 
 EXPOSE 8080
 
