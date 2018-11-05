@@ -61,8 +61,10 @@ function findXY(action, e) {
         }
     }
     if (action === 'up' || action === 'out') {
+        if (flag) {
+            sendToServer(canvas.toDataURL());
+        }
         flag = false;
-        sendToServer(canvas.toDataURL());
     }
     if (action === 'move') {
         if (flag) {
@@ -94,6 +96,8 @@ function erase() {
 
 
 function sendToServer(data) {
+    console.log(document.getElementById('slow').checked);
+
     const url = document.location.href + 'send';
     const promise = fetch(url, {
         method: 'post',
@@ -101,7 +105,8 @@ function sendToServer(data) {
             'Content-Type': 'applicatoin/json; charset=utf-8'
         },
         body:JSON.stringify({
-            imgBase64: data
+            imgBase64: data,
+            slow: document.getElementById('slow').checked
         })
     });
 
