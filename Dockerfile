@@ -6,7 +6,7 @@ RUN apt install -y python3-dev gcc
 RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 RUN pip install torchvision_nightly
 RUN pip install fastai==1.0.19
-RUN pip install starlette uvicorn python-multipart aiohttp jinja2
+RUN pip install starlette uvicorn python-multipart aiohttp aiofiles jinja2
 
 WORKDIR /app
 
