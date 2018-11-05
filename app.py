@@ -1,3 +1,4 @@
+import os
 import sys
 import base64
 from io import BytesIO
@@ -11,7 +12,7 @@ from starlette.responses import JSONResponse, HTMLResponse
 import uvicorn
 
 import torch
-from torchvision.models import resnet34
+from torchvision.models import resnet18
 from fastai.vision import (
     ImageDataBunch,
     open_image,
@@ -21,7 +22,7 @@ from fastai.vision import (
 
 
 ROOT_DIR = (Path().parent/'templates').as_posix()
-MODEL_NAME = 'model'
+MODEL_NAME = os.environ.get('MODEL_NAME', 'resnet50')
 
 
 app = Starlette()
@@ -39,7 +40,7 @@ placeholder_data = ImageDataBunch.from_name_re(
     size=224
 )
 
-learn = create_cnn(placeholder_data, resnet34)
+learn = create_cnn(placeholder_data, resnet18)
 state = torch.load(f'models/{MODEL_NAME}.pth', map_location='cpu')
 learn.model.load_state_dict(state, state)
 

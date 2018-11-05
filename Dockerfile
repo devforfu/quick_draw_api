@@ -9,7 +9,6 @@ RUN pip install fastai==1.0.15
 RUN pip install starlette uvicorn python-multipart aiohttp
 
 ADD app.py app.py
-ADD models/model.pth models/model.pth
 
 RUN python app.py
 
